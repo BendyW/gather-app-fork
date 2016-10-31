@@ -1,0 +1,116 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto|Russo+One");
+* {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 0; }
+
+div#menu-bar {
+  background-color: black;
+  width: 100%;
+  height: 30px;
+  padding-top: 2px; }
+
+section#menu-bar-wrapper > a {
+  color: white;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 10px; }
+
+section#menu-bar-wrapper > a:hover {
+  font-weight: bold;
+  margin-top: 3px; }
+
+div#main {
+  text-align: center; }
+
+h1 {
+  font-family: "Russo One", sans;
+  text-transform: uppercase;
+  font-size: 96px;
+  margin: 75px 0 0 0;
+  letter-spacing: .25em; }
+
+h2 {
+  font-family: "Roboto", sans-serif;
+  font-weight: lighter;
+  font-size: 12px;
+  text-transform: uppercase; }
+
+h3 {
+  margin-top: 42px; }
+
+article#input-buffer {
+  margin: 0;
+  padding: 0;
+  width: 5%;
+  display: inline-block; }
+
+h3 {
+  font-size: 12px; }
+
+input {
+  height: 30px;
+  margin-top: 35px;
+  display: inline-block; }
+
+#search {
+  width: 30%;
+  padding-left: 10px;
+  border: 1px solid #c1c1c1; }
+
+#location {
+  width: 20%;
+  background: url(../geo_icon.png) no-repeat scroll 5px 5px;
+  padding-left: 30px;
+  border: 1px solid #c1c1c1; }
+
+button#search {
+  width: 15%;
+  height: 50px;
+  background-color: aquamarine;
+  color: black;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  border: 0;
+  margin-top: 25px;
+  text-transform: uppercase;
+  padding: 0; }
+
+button#search:hover {
+  color: white;
+  background-color: black; }
+
+footer {
+  font-size: 10px;
+  height: 100px;
+  margin-top: 100px;
+  clear: both; }
+
+div#sidebar {
+  background-color: white;
+  height: 100%;
+  width: 20%;
+  float: left;
+  box-shadow: 0px 0px 20px #888888;
+  -moz-box-shadow: 0px 0px 20px #888888;
+  -webkit-box-shadow: 0px 0px 20px #888888;
+  position: relative;
+  z-index: 99;
+  overflow: scroll;
+  overflow-x: hidden; }
+
+div#map {
+  width: 80%;
+  height: 100%;
+  background-color: grey;
+  float: left;
+  z-index: 1; }
+
+article#results-box {
+  padding: 15px 0;
+  height: 100px; }
+
+article#results-box > button {
+  margin-bottom: 10%; }
+
+/*# sourceMappingURL=style.css.map */
