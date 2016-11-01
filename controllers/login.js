@@ -16,7 +16,7 @@ function attemptToLogin(req,res,next){
             var attempt = comparePasswordHashes(req.body.password, result.attributes.password_hash);
             // then we share the results
             if(attempt === true) {
-                res.render('index', {})
+                res.render('success', req.body);
             }
             else{
                 res.render('loginFailed', {});

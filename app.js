@@ -4,7 +4,6 @@ var express = require('express');
 var path = require('path');
 var app = express();
 var bodyParser = require('body-parser');
-// var port = 4000;
 
 // Adding rendering engine
 
@@ -27,10 +26,6 @@ app.use('/result', mapResultCtrl);
 app.use('/register', regCtrl);
 app.use('/login',loginCtrl);
 
-// Listen for port
 
-// app.listen(port, function(req, res, next){
-//     console.log('Port is working on ' + port);
-// })
 
 module.exports = app;
