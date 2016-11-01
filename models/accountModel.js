@@ -1,9 +1,11 @@
-var db = require('./db');
-var bookshelf = require('bookshelf')(db);
+var Bookshelf = require('./db');
+// require foreign key table from model require('./model');
 
-var accountModel = bookshelf.Model.extend({
+var AccountModel = Bookshelf.Model.extend({
     tableName: 'user_accounts'
+    //,saved_events: function(){
+    //return this.belongsTo('modelVar');}
 });
 console.log('accounts model')
 
-module.exports = accountModel;
+module.exports = Bookshelf.model('AccountModel', AccountModel);

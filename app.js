@@ -3,7 +3,8 @@
 var express = require('express');
 var path = require('path');
 var app = express();
-var port = 4000;
+var bodyParser = require('body-parser');
+// var port = 4000;
 
 // Adding rendering engine
 
@@ -16,15 +17,20 @@ app.set('view engine', 'hbs');
 var indexCtrl = require('./controllers/index');
 var mapResultCtrl = require('./controllers/mapResult');
 var regCtrl = require('./controllers/register');
+var loginCtrl = require('./controllers/login');
 
 // Mapping routes to necessary controllers
-
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/', indexCtrl);
 app.use('/result', mapResultCtrl);
 app.use('/register', regCtrl);
+app.use('/login',loginCtrl);
 
 // Listen for port
 
-app.listen(port, function(req, res, next){
-    console.log('Port is working on ' + port);
-})
+// app.listen(port, function(req, res, next){
+//     console.log('Port is working on ' + port);
+// })
+
+module.exports = app;

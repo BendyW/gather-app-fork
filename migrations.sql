@@ -4,7 +4,7 @@ create table user_accounts (
     id int not null auto_increment,
     first_name varchar(20) not null,
     last_name varchar(30) not null,
-    user_name varchar(20) not null,
+    user_name varchar(20) not null unique,
     email varchar(255) not null,
     password_hash varchar(255) not null,
     primary key (id)

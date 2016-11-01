@@ -1,6 +1,6 @@
 'use strict'
-require('dotenv').config(); //# dot-env
-var db = require('knex')({	//# knex
+require('dotenv').config(); 
+var db = require('knex')({	
     client: process.env.DB_TYPE,
     connection: {
         host: process.env.DB_SERVER,
@@ -10,4 +10,8 @@ var db = require('knex')({	//# knex
     }
 });
 
-module.exports = db;
+var Bookshelf = require('bookshelf')(db);
+
+Bookshelf.plugin('registry');
+
+module.exports = Bookshelf;
