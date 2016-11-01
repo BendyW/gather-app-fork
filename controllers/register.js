@@ -22,7 +22,7 @@ function attemptToRegister(req,res,next){
         password_hash: hashedPassword
     }).save().then(function(result) {
         //res.redirect('/')
-        res.json(result);
+        res.render('success', req.body);
     });
 }
 
