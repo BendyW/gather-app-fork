@@ -150,3 +150,15 @@ article#results-box {
 article#results-box > button {
   margin-bottom: 10%;
 }
+
+// Hide & Show
+
+.hide {
+  display: none;
+  visibility: hidden;
+}
+
+.show {
+  display: block;
+  visibility: visible;
+}
