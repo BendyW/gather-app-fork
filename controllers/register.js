@@ -16,6 +16,7 @@ function attemptToRegister(req,res,next){
     var password = req.body.password_hash;
     var hashedPassword = createPasswordHash(password);
     var model = new AccountModel({
+        user_name: req.body.user_name,
         email: req.body.email,
         first_name: req.body.first_name,
         last_name: req.body.last_name,

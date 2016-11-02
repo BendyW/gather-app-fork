@@ -1,15 +1,52 @@
 <div id='main' class='container clearfix'>
-    <section id='main' class='grid_12'>
+    <section class='grid_12'>
         <h1>gather</h1>
-        <h2>Find a gathering with like-minded plebs just like you</h2>
+        <h2>Find a gathering of like-minded plebs just like you</h2>
     </section>
 
     <section class='grid_12'>
-        <form action="/result" method="post">
-            <input type='text' name='search' placeholder='What are you into?' id='search'>
+        <!--<form action="#" method="post">-->
+            <!--<input type='text' name='search' placeholder='What are you into?' id='search'>-->
+
+            <select name="categories" id="categories-menu">
+                <option value="1">Arts & Culture</option>
+                <option value="34">Technology</option>
+                <option value="27">Photography</option>
+                <option value="18">Book Clubs</option>
+            </select>
+
             <article id='input-buffer'><h3>in</h3></article>
-            <input type='text' name='location' id='userCity'><br>
-            <button id="search">Gather up!</button>
-        </form>
+            <input type='text' name='location' placeholder='Location' id='location-input'><br>
+            <button id="gatherUp">Gather up!</button>
+        <!--</form>-->
+
+        <section id="geolocationDiv">
+            <article>
+                <p id="country"></p>
+                <p id="state"></p>
+                <p id="city"></p>
+                <p id="latitude"></p>
+                <p id="longitude"></p>
+                <p id="ip"></p>
+            </article>
+        </section>
+
+
+
+
     </section>
+</div>
+
+<div id="map-container" class="hide">
+    <div id="sidebar" class="grid_3 omega">
+        <!--<article class="results-box">-->
+        <!--<h3>Name of Meetup</h3>-->
+        <!--<h2>Meetup Location</h2>-->
+        <!--<button>Save</button>-->
+        <!--<hr>-->
+        <!--</article>-->
+    </div>
+    <div id="map" class="grid_9 omega">
+        x
+    </div>
 </div>
