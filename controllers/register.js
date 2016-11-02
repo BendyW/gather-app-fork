@@ -1,6 +1,6 @@
 var express = require('express');
 var regCtrl = express.Router();
-var AccountModel = require('../models/AccountModel');
+var Account = require('../models/AccountModel');
 var bcrypt = require('bcryptjs');
 
 /* GET users listing. */
@@ -12,17 +12,28 @@ regCtrl.get('/', function (req,res,next) {
 regCtrl.post('/created', attemptToRegister);
 
 function attemptToRegister(req,res,next){
-    console.log(req.body);
     var password = req.body.password_hash;
     var hashedPassword = createPasswordHash(password);
-    var model = new AccountModel({
+    var model = new Account({
+        user_name: req.body.user_name,
         email: req.body.email,
         first_name: req.body.first_name,
         last_name: req.body.last_name,
         password_hash: hashedPassword
     }).save().then(function(result) {
-        //res.redirect('/')
-        res.render('success', req.body);
+        console.log(result.attributes.user_name);
+        req.session.user_name = result.attributes.user_name;
+        req.session.isLoggedIn = true;
+        console.log(req.session);
+        res.redirect('/');
+        // AccountModel.where({user_name: req.session.user}).fetch().then(
+        //    function (result) {
+        //        console.log(req.session)
+        //        res.redirect('/');
+        //    }
+        // ).catch(function (error) {
+        //     console.log(error);
+        // });
     });
 }
 
