@@ -9,7 +9,13 @@
 <body>
 <div id="menu-bar">
     <section id="menu-bar-wrapper" class="container">
-        <a href="/login">Sign in</a> &nbsp <a href="/register">Register</a>
+        <div id="notLogged">
+            <a href="/login">Sign in</a> &nbsp <a href="/register">Register</a>
+        </div>
+        <div id="logged">
+            &nbsp <a href="/profile">{{user_name}}</a> &nbsp
+            <form action="/logout" method="post"><button class="hide">SignOut</button></form>
+        </div>
     </section>
 </div>
 
@@ -18,8 +24,12 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUfBnXBVmYXSgDFmhaEMjtTnaf3s8adfY&callback=initMap" async defer></script>
     <script src="../scripts/input-test.js"></script>
-    <script src="../scripts/main.js"></script>
+
+
     <script src="../scripts/api-test.js"></script>
+
+    <script src='../scripts/main.js'></script>
+
 </body>
 
 </html>

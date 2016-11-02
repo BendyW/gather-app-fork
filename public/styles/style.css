@@ -3,14 +3,22 @@
   font-family: "Roboto", sans-serif;
   margin: 0;
   padding: 0; }
-
+.hide {
+  display: none;
+  visibility: none;
+}
+div#logged *, div#notLogged *{
+  color: white;
+}
 div#menu-bar {
   background-color: black;
   display: block;
   width: 100%;
   height: 4%;
   padding-top: 2px;
-  position: static; }
+  position: static;
+  height: 4%;
+  padding-top: 2px; }
 
 section#menu-bar-wrapper > a {
   color: white;

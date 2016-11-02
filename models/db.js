@@ -14,4 +14,5 @@ var Bookshelf = require('bookshelf')(db);
 
 Bookshelf.plugin('registry');
 
+
 module.exports = Bookshelf;

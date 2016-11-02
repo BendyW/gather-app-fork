@@ -1,3 +1,4 @@
+
 // Global variables for Meetup request
 
 window.onload = function(){
@@ -250,3 +251,9 @@ $('#gatherUp').click(function() {
 });
 
 // --------------------
+
+if( $('#logged > a').html() !== ""){
+    $('#notLogged > a:nth-child(1)').addClass('hide');
+    $('#notLogged > a:nth-child(2)').addClass('hide');
+    $('#logged > form > button').removeClass('hide');
+}
