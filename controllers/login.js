@@ -1,6 +1,6 @@
 var express = require('express');
 var loginCtrl = express.Router();
-var Account = require('../models/AccountModel');
+var Account = require('../models/accountModel');
 var bcrypt = require('bcryptjs');
 
 

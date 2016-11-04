@@ -1,26 +1,38 @@
-<div id='main' class='container clearfix'>
-    <section class='grid_12'>
-        <h1>gather</h1>
-        <h2>Find a gathering of like-minded plebs just like you</h2>
-    </section>
+<div id="bgvid-container">
+    <video playsinline autoplay muted loop poster="" id="bgvid">
+        <!--<source src="polina.webm" type="video/webm">-->
+        <source src="../images/video.mp4" type="video/mp4">
+    </video>
+</div>
 
-    <section class='grid_12'>
-        <!--<form action="#" method="post">-->
-            <!--<input type='text' name='search' placeholder='What are you into?' id='search'>-->
+    <div id='main' class='container clearfix'>
+        <section class='grid_12'>
+            <h1>gather</h1>
+            <h2 class="subheader">What are you into?</h2>
+        </section>
 
-            <select name="categories" id="categories-menu">
-                <option value="1">Arts & Culture</option>
-                <option value="34">Technology</option>
-                <option value="27">Photography</option>
-                <option value="18">Book Clubs</option>
-            </select>
+        <section class='grid_12'>
 
-            <article id='input-buffer'><h3>in</h3></article>
-            <input type='text' name='location' placeholder='Location' id='location-input'><br>
-            <button id="gatherUp">Gather up!</button>
-        <!--</form>-->
+                <select name="categories" id="categories-menu">
+                    <option value="1">Arts & Culture</option>
+                    <option value="34">Technology</option>
+                    <option value="27">Photography</option>
+                    <option value="18">Book Clubs</option>
+                    <option value="1">Career & Business</option>
+                    <option value="3">Cars & Motorcycles</option>
+                    <option value="4">Community & Environment</option>
+                    <option value="5">Dancing"</option>
+                    <option value="6">Education & Learning</option>
+                    <option value="8">Fashion & Beauty</option>
+                    <option value="9">Fitness</option>
+                    <option value="10">Food & Drink</option>
+                </select>
 
-        <section id="geolocationDiv">
+                <article id='input-buffer'><h3>in</h3></article>
+                <input type='text' name='location' placeholder='Location' id='location-input'><br>
+                <button id="gatherUp">Gather up!</button>
+
+        <section id="geolocationDiv" class="hide">
             <article>
                 <p id="country"></p>
                 <p id="state"></p>

@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>gather - Find local meetups and get-togethers in your area</title>
+    <title>Gather - Find local meetups and get-togethers in your area</title>
     <link rel="stylesheet" href="../styles/style.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="../styles/grid.css" type="text/css" media="screen" />
     <meta name="viewport" content="width=device-width, initial-scale = 1.0, user-scalable = no" />
@@ -8,13 +8,14 @@
 
 <body>
 <div id="menu-bar">
-    <section id="menu-bar-wrapper" class="container">
+    <section id="menu-bar-wrapper" class="grid_12">
         <div id="notLogged">
-            <a href="/login">Sign in</a> &nbsp <a href="/register">Register</a>
+            <a href="." id="home-link" >Home</a> &nbsp;
+            <a href="/login">Sign in</a> &nbsp; <a href="/register">Register</a>
         </div>
-        <div id="logged">
-            &nbsp <a href="/profile">{{user_name}}</a> &nbsp
-            <form action="/logout" method="post"><button class="hide">SignOut</button></form>
+        <div id="logged" class="hide">
+            <a href="/profile" id="profile-link">{{user_name}}</a> &nbsp;
+            <form action="/logout" method="post"><button class="hide signout-button">SignOut</button></form>
         </div>
     </section>
 </div>

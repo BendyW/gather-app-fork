@@ -1,6 +1,6 @@
 var express = require('express');
 var indexCtrl = express.Router();
-var Account = require('../models/AccountModel');
+var Account = require('../models/accountModel');
 
 indexCtrl.get('/', function(req, res, next){
     if(req.session.isLoggedIn === true){
@@ -22,7 +22,7 @@ indexCtrl.get('/profile', function (req,res,next) {
                 res.render('profile', cb.attributes);
             });
     }else
-    res.send("Hi buddy");
+    res.send("This is an error");
 })
 indexCtrl.post('/logout', function (req,res,next) {
     req.session.isLoggedIn = false;

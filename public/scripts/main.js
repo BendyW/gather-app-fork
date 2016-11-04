@@ -4,6 +4,7 @@
 window.onload = function(){
     console.log('Js is live.');
     // get_location();
+    getLocationJSON();
 }
 
 var undfCheck = undefined;
@@ -50,11 +51,12 @@ var userGeoLocation = {lat: 0, lng: 0};
 
 // Meetup AJAX Request
 
-function Event(name, lat, lng) {
+function Event(name, lat, lng, id) {
     this.name = name;
     // this.venue = venue;
     this.lat = lat;
     this.lng = lng;
+    this.id = id;
 };
 var meetupRequest = function (){
 
@@ -65,7 +67,7 @@ var meetupRequest = function (){
 
     var checkAmountEvents = function() {
         $('#sidebar').prepend(
-            '<br>' + '<p id="events-found">' + (gatheredEvents.length + 1) + ' gatherings found in your area!' +'</p>'
+            '<br>' + '<br>' + '<p id="events-found">' + (gatheredEvents.length + 1) + ' gatherings found in your area!' +'</p>'
         );
     }
 
@@ -80,29 +82,30 @@ var meetupRequest = function (){
 
                 if(data.results[i].venue === undefined) {
                     console.log('-----------------------------------------');
-                    $('#sidebar').append(
-                        '<article class=' + '"results-box">' +
-                        '<h2>' + (i + 1) + '.' + '</h2>' +
-                        '<h3>' + data.results[i].name + '</h3>' +
-                        '<button id="save-event-button">Save</button>' +
-                        '</article>' +
-                        '<hr>'
-                    );
+                    // $('#sidebar').append(
+                    //     '<article class=' + '"results-box">' +
+                    //     '<h2>' + (i + 1) + '.' + '</h2>' +
+                    //     '<h3>' + data.results[i].name + '</h3>' +
+                    //     '<button id="save-event-button">Save</button>' +
+                    //     '</article>' +
+                    //     '<hr>'
+                    // );
                     console.log('-----------------------------------------');
                 } else {
 
                     console.log(data.results[i]);
-                    gatheredEvents.push(new Event(data.results[i].name, data.results[i].venue.lat, data.results[i].venue.lon));
+                    gatheredEvents.push(new Event(data.results[i].name, data.results[i].venue.lat, data.results[i].venue.lon, i));
                     console.log('Object ' + [i] + ' successfully added');
 
                     $('#sidebar').append(
-                        '<article class=' + '"results-box">' +
-                        '<h2>' + (i + 1) + '.' + '</h2>' +
+                        '<article data-id=' + i + ' class=' + '"results-box">' +
+                        '<hr>' + '<br/>' +
+                        '<h2 class="number">' + (i + 1) + '.' + '</h2>' +
                         '<h3>' + data.results[i].name + '</h3>' +
                         '<h4>' + data.results[i].venue.name + '</h4>' +
+                        '<br />' +
                         '<button id="save-event-button">Save</button>' +
-                        '</article>' +
-                        '<hr>'
+                        '</article>'
                     );
 
                 } // end of if statement
@@ -113,9 +116,11 @@ var meetupRequest = function (){
             console.log('API call finished');
 
             $('#sidebar').append(
+              '<a href=".">' +
               '<article class="results-box-end">' +
-              '<a href="."><h4>Try again?</h4></a>' +
-              '</article>'
+              '<h4 class="results-box-end-h">Try again?</h4>' +
+              '</article>' +
+              '</a>'
             );
 
             makeMarkers();
@@ -131,80 +136,93 @@ var meetupRequest = function (){
 // Let's Make Some Markers
 // var mMart = {lat: 41.888543, lng: -87.6354435}; // reference for Gmaps marker
 
-var contentStringArray = [];
+var labels = "";
+var labelIndex = 0;
 
-var makeContentString = function() {
+var makeLabels = function() {
 
-    for (var i=0; i < gatheredEvents.length; i++) {
-        contentStringArray.push(
-            '<div id="markerContent">' +
-            '<p>' + gatheredEvents[i].name + '</p>'
-            + '</div>'
-        );
-
-    } // end of For Loop
-
+    for(var i=0; gatheredEvents.length; i++) {
+        labels += [i];
+        console.log('made labels');
+    }
 }
 
 
-var infowindowArray = [];
-
 var makeMarkers =  function () {
-
-    makeContentString();
 
     for (var i = 0; i < gatheredEvents.length; i++) {
 
-        gatheredEventsMarkers.push(
 
-        new google.maps.Marker({
+
+        var marker = new google.maps.Marker({
             position: {lat: gatheredEvents[i].lat, lng: gatheredEvents[i].lng},
             map: map,
-            title: gatheredEvents[i].name
-            // label: labels[labelIndex++ % labels.length]
+            title: gatheredEvents[i].name,
+            id: i,
+            label: gatheredEvents.id
             // icon: { url: '../images/geo-tag-active.svg',
             //         size: new google.maps.Size(15, 20),
             //         scaledSize: new google.maps.Size(15, 20),
             //         origin: new google.maps.Point(15, 0)
             // }
         })
+        // set event
 
-    )
+        // var eventsListDom = $('article[data-id]');
+        // for (var el in eventsListDom) {
+        //     console.log('woosh')
+        //     var article = $(eventsListDom[el]);
+        //     console.log(article);
+        //     $(article).on('click', function(event) {
+        //        //   $(this).css({'background':'lime'});
+        //     });
+        //     // add events to each sidebar entry to highlight marker
+        // };
+
+        // var eventsListDom = $('article[data-id]');
+        // for (var el in eventsListDom) {
+        //     console.log('woosh')
+        //     var article = $(eventsListDom[el]);
+        //     console.log(article);
+        //     $(article).on('click', function(event) {
+        //         var id = $('article').data('id');
+        //         // maybe parseInt id? check typeof
+        //         gatheredEventsMarkers[id].setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png');
+        //
+        //     });
+        //     // add events to each sidebar entry to highlight marker
+        // };
+
+        marker.addListener('click', function(event) {
+            var m = this;
+            console.log(m);
+            var eventId = m['id'];
+            // select the dom element @ this position
+            var eventsListDom = $('article[data-id]');
+            var eventEl = eventsListDom[eventId];
+            console.log('Our event is');
+            console.log(eventEl);
+            //.addClass() + then setTime to .removeClass
+            //console.log('y u click me');
+            //console.log(event);
+            //alert('ben is sleepy')
+        });
+
+        gatheredEventsMarkers.push(marker); // end of push
 
     } // end of For Loop
 
-    for (var i=0; i < contentStringArray.length; i++) {
-
-        infowindowArray.push(
-
-        new google.maps.InfoWindow({
-            content: contentStringArray[i]
-        })
-
-        );
-
-        console.log('info window loop is working')
-
-    }
-
-};
-
-
-var addinfoWindows = function() {
-    for (var i=0; i <= gatheredEventsMarkers.length; i++) {
-
-        gatheredEventsMarkers[i].addListener('click', function () {
-            infowindowArray[i].open(map, gatheredEventsMarkers[i]);
-            console.log('this is clicked');
-
-        })
-
-    };
-
-    console.log('Added info windows properly');
 }
 
-
+// var makeMarkersEvtList = function() {
+//
+//     for(var i = 0; i < gatheredEventsMarkers.length; i++) {
+//
+//         console.log('event marker ' + i + ' added')
+//     }
+// }
+//
+// makeMarkersEvtList();
 
 // --------------------
 
@@ -217,25 +235,31 @@ var addinfoWindows = function() {
 // function show_map(position) {
 //     userLatLon.push(position.coords.latitude, position.coords.longitude);
 //     console.log('Geo call back successful, good job.');
+//     getLocationJSON();
 // }
 
-$.getJSON('https://geoip-db.com/json/geoip.php?jsonp=?')
-    .done (function(location)
-    {
-        $('#country').html(location.country_name);
-        $('#state').html(location.state);
-        $('#city').html(location.city);
-        $('#latitude').html(location.latitude);
-        $('#longitude').html(location.longitude);
-        $('#ip').html(location.IPv4);
+var getLocationJSON = function() {
 
-        $('#location-input').attr("placeholder", location.city);
-        $('#location-input').prop('disabled', true);
+    $.getJSON('https://geoip-db.com/json/geoip.php?jsonp=?')
+        .done(function (location) {
+            $('#country').html(location.country_name);
+            $('#state').html(location.state);
+            $('#city').html(location.city);
+            $('#latitude').html(location.latitude);
+            $('#longitude').html(location.longitude);
+            $('#ip').html(location.IPv4);
 
-        userGeoLocation.lat = location.latitude;
-        userGeoLocation.lng = location.longitude;
+            $('#location-input').attr("placeholder", location.city);
+            $('#location-input').prop('disabled', true);
 
-    });
+            userGeoLocation.lat = location.latitude;
+            userGeoLocation.lng = location.longitude;
+
+            console.log('Forced user location');
+
+        });
+}
+
 
 // --------------------
 
@@ -244,6 +268,7 @@ $.getJSON('https://geoip-db.com/json/geoip.php?jsonp=?')
 
 $('#gatherUp').click(function() {
     $('#main').addClass('hide');
+    $('#bgvid-container').addClass('hide');
     $('#map-container').removeClass('hide');
     meetupRequest();
     initMap(userGeoLocation);
@@ -255,5 +280,7 @@ $('#gatherUp').click(function() {
 if( $('#logged > a').html() !== ""){
     $('#notLogged > a:nth-child(1)').addClass('hide');
     $('#notLogged > a:nth-child(2)').addClass('hide');
+    $('#notLogged').addClass('hide');
+    $('#logged').removeClass('hide');
     $('#logged > form > button').removeClass('hide');
 }

@@ -1,9 +1,16 @@
-<h3>Register</h3>
-<form action="/register/created" method="post">
-    <input type="text" name="user_name" placeholder="Username" value="Yoyoyoyoyo" required>
-    <input type="text" name="email" placeholder="Email" value="test@email.com" required>
-    <input type="text" name="first_name" placeholder="First Name" value="Bob" required>
-    <input type="text" name="last_name" placeholder="Last Name" value="TheBuilder" required>
-    <input type="password" name="password_hash" placeholder="Password" value="yeswecan" required>
-    <button>submit</button>
-</form>
+<div class="container" id="registration-container">
+    <section class="grid_12 omega" id="registration-section">
+        <hr class="registration">
+        <h3 class="register">Register</h3>
+        <h4 class="register-subhead">This is a subheader for the registration page.</h4>
+        <form action="/register/created" method="post">
+            <input type="text" name="user_name" placeholder="Username" value="" required>
+            <input type="text" name="email" placeholder="Email" value="" required>
+            <input type="text" name="first_name" placeholder="First Name" value="" required>
+            <input type="text" name="last_name" placeholder="Last Name" value="" required>
+            <input type="password" name="password_hash" placeholder="Password" value="" required>
+            <button class="register-button">submit</button>
+            <a href="./"><button class="register-button-return">return</button></a>
+        </form>
+    </section>
+</div>

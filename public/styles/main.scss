@@ -1,26 +1,54 @@
-$logoText: 96px;
-$subText: 12px;
-$font: 'Roboto', sans-serif;
-$secFont: 'Georgia', sans-serif;
+$logoText: 200px;
+$subText: 14px;
+$font: 'Helvetica', sans;
+$secFont: 'Droid Serif', sans-serif;
 $secWeight: lighter;
 $reset: 0;
-$inputHeight: 30px;
-$logoFont: 'Russo One', sans;
-$subFont: 'Roboto', sans-serif;
-@import url('https://fonts.googleapis.com/css?family=Roboto|Russo+One');
+$inputHeight: 40px;
+$logoFont: 'Six Caps', sans-serif;
+$subFont: 'Droid Serif', sans-serif;
+@import url('https://fonts.googleapis.com/css?family=Droid+Serif:400,400i,700,700i|Six+Caps');
+
+button:focus, input:focus, select:focus {
+  outline: 0;
+}
+
 
 
 * {
   font-family: $font;
   margin: $reset;
   padding: $reset;
+  color: white;
+}
+
+body {
+  background: black;
+}
+
+hr {
+  width: 20px;
+  border: none;
+  background-color: #353535;
+  margin-left: 10px;
+  height: 2px;
+  background-color: aquamarine;
+}
+
+hr.registration {
+  width: 50px;
+  border: none;
+  background-color: #353535;
+  height: 5px;
+  background-color: aquamarine;
+  margin-left: 0px;
 }
 
 div#menu-bar {
   background-color: black;
   display: block;
   width: 100%;
-  height: 4%;
+  height: 38px;
   padding-top: 2px;
   position: static;
 }
@@ -45,15 +73,26 @@ h1 {
   font-family: $logoFont;
   text-transform: uppercase;
   font-size: $logoText;
-  margin: 75px 0 0 0;
-  letter-spacing: .25em;
+  margin: 50px 0 0 0;
+  letter-spacing: 3px;
+  color: white;
 }
 
 h2 {
   font-family: $subFont;
   font-weight: $secWeight;
-  font-size: $subText;
-  text-transform: uppercase;
+  font-size: 16px;
+}
+
+h2.number {
+  color: aquamarine;
+  font-family: 'Helvetica', sans;
+  font-weight: bold;
+}
+
+h2.subheader {
+  font-size: 20px;
+  font-style: italic;
 }
 
 //h3 {
@@ -73,14 +112,43 @@ h2 {
 }
 
 h3 {
-  font-size: 16px;
-  padding: 12px;
+  font-size: 14px;
+  padding: 12px 90px 12px 12px;
+  text-transform: uppercase;
+}
+
+h3.register {
+  font-size: 28px;
+  padding: 12px 90px 12px 0px;
+}
+
+h4.register-subhead {
+  padding: 0px 90px 12px 0px;
+  font-size: 14px;
+  font-weight: 200;
+  font-style: italic;
+  margin-bottom: 25px;
+  color: coral;
+}
+
+h4.profile {
+  padding: 0px 90px 12px 0px;
+  font-size: 18px;
+  font-weight: 200;
+  font-style: italic;
+  margin-bottom: 25px;
+  color: coral;
+  text-transform: lowercase;
 }
 
 h4 {
   font-size: 12px;
   padding: 0 12px 0 12px;
   float: left;
+  font-family: $subFont;
+  color: coral;
+  margin-top: -3px;
+  margin-right: 120px;
 }
 
 input {
@@ -97,27 +165,32 @@ input {
 
 #location-input {
   width: 20%;
-  background: url(../images/geo-tag-active.svg) no-repeat scroll 5px 0px;
-  padding-left:30px;
-  border: 1px solid #c1c1c1;
+  background: url(../images/geo-tag-active.svg) no-repeat scroll 0px 6px;
+  background-size: 20px;
+  padding-left: 30px;
+  border: 0;
+  border-bottom: 1px solid grey;
+  font-size: 18px;
 }
 
 button#gatherUp {
   width: 15%;
   height: 50px;
-  background-color: aquamarine;
-  color: black;
+  background-color: transparent;
+  color: white;
   font-family: $font;
   font-weight: bold;
   border: $reset;
-  margin-top: 25px;
+  margin-top: 50px;
   text-transform: uppercase;
   padding: 0;
+  border: 4px solid white;
 }
 
 button#gatherUp:hover {
-  color: white;
-  background-color: black;
+  background-color: aquamarine;
+  color: black;
+  border: 4px solid aquamarine;
 }
 
 footer {
@@ -136,13 +209,13 @@ footer {
 
 div#map-container {
   width: 100%;
-  height: 96%;
+  height: 95.4%;
   overflow-y: hidden;
   overflow-x: hidden;
 }
 
 div#sidebar {
-  background-color: white;
+  background-color: black;
   height: 100%;
   //width: 24%;
   float: left;
@@ -154,6 +227,7 @@ div#sidebar {
   overflow: scroll;
   overflow-x: hidden;
   //padding: 10px;
+  color: white;
 }
 
 div#map {
@@ -162,11 +236,16 @@ div#map {
   background-color: grey;
   float: left;
   z-index: 1;
+  overflow-y:hidden;
 }
 
 article.results-box {
-  padding: 15px 0;
-  height: 100px;
+  padding: 20px 0;
+  border-bottom: 1px solid #353535;
+}
+
+article.results-box:hover{
+  background-color: #353535;
 }
 
 article.results-box > button {
@@ -174,36 +253,255 @@ article.results-box > button {
 }
 
 article.results-box-end {
-  padding: 15px 0;
-  height: 35px;
+  padding: 18px 0;
+  height: 15px;
   text-transform: uppercase;
+  text-align: center;
+  color: white;
+}
+
+article.results-box-end:hover {
+  background-color: aquamarine;
+  color: black;
+}
+
+h4.results-box-end-h {
+  font-family: 'Helvetica', sans;
+  font-weight: bold;
+  color: white;
+  float: right;
+  text-align: center;
+  margin-top: 1px;
 }
 
 button#save-event-button {
-  margin: 5px 0 0 15px;
+  color: aquamarine;
+  background-color: transparent;
+  margin: -25px 25px 0 15px;
+  padding: 2px 10px;
+  border: 1px solid aquamarine;
+  float: right;
+  text-transform: uppercase;
+}
+
+button#save-event-button:hover {
+  color: black;
+  background-color: aquamarine;
+  border: 1px solid aquamarine;
+}
+
+button.signout-button {
+  color: aquamarine;
+  background-color: transparent;
+  padding: 2px 10px;
+  border: 1px solid aquamarine;
+  float: right;
+  text-transform: uppercase;
+  margin-top: -3px;
+  margin-left: 15px;
+}
+
+button.signout-button:hover {
+  color: black;
+  background-color: aquamarine;
+  border: 1px solid aquamarine;
 }
 
 p#events-found {
-  font-size: $subText;
-  margin-left: 10px;
+  margin-left: 0px;
+  font-size: 12px;
+  float: left;
+  font-family: "Droid Serif", serif;
+  color: black;
+  margin-top: -38px;
+  background-color: aquamarine;
+  width: 100%;
+  height: 3%;
+  padding: 10px 0 10px 10px;
 }
 
 select#categories-menu {
-  height: 30px;
-  border: 1px solid grey;
-  border-radius: 0px;
+  height: 37px;
+  width: 200px;
+  border: 0;
+  border-radius: 0;
+  border-bottom: 1px solid #c1c1c1;
+  color: white;
+  font-size: 16px;
+  background-color: transparent;
   -webkit-appearance: none;
   -webkit-border-radius: 0px;
-  padding: 0 30px;
 }
 
 section#geolocationDiv {
   margin-top: 50px;
 }
 
+// Menu bar log in and out
+
+div#logged > a, div#logged > form {
+  margin-top: 3px;
+  margin-right: 10px;
+  float: left;
+}
+
+div#logged > a:last-child {
+  margin-left: 0px;
+}
+
+#notLogged, #logged {
+  margin-top: 8px;
+  float: right;
+  margin-right: 20px;
+}
+
+#notLogged > a, #logged > a {
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+#notLogged > a:hover, #logged > a:hover {
+  color: aquamarine;
+  padding-bottom: 10px;
+  border-bottom: 3px solid aquamarine;
+}
+
+a#profile-link {
+  color: coral;
+  padding-bottom: 10px;
+  margin-top: -1px;
+}
+
+a#profile-link:hover {
+  color: coral;
+  border-bottom: 3px solid coral;
+}
+
+// Registration page stuff
+
+#registration-section {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+#registration-section > form > input {
+  width: 100%;
+  display: block;
+  border: 0;
+  border-bottom: 1px solid white;
+  background-color: transparent;
+  font-size: 18px;
+  margin-bottom: 50px;
+
+}
+#registration-section > form > input[type="text"]:focus, #registration-section > form > input[type="password"]:focus {
+  border-bottom: 1px solid aquamarine;
+  color: aquamarine;
+}
+
+button.register-button {
+  width: 15%;
+  height: 50px;
+  background-color: aquamarine;
+  color: black;
+  font-family: $font;
+  font-weight: bold;
+  border: $reset;
+  margin-top: 25px;
+  text-transform: uppercase;
+  padding: 0;
+  border: 2px solid aquamarine;
+  float: right;
+}
+
+button.register-button-return {
+  width: 15%;
+  height: 50px;
+  background-color: transparent;
+  color: white;
+  font-family: $font;
+  font-weight: bold;
+  border: $reset;
+  margin-top: 25px;
+  margin-right: 20px;
+  text-transform: uppercase;
+  padding: 0;
+  border: 2px solid white;
+  float: right;
+}
+
+button.register-button:hover {
+  background-color: coral;
+  color: white;
+  border: 2px solid coral;
+}
+
+button.register-button-return:hover {
+  background-color: coral;
+  color: white;
+  border: 2px solid coral;
+}
+
+div#video-bg {
+  z-index: -99;
+
+}
+
+video#bgvid {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  //background: url() no-repeat;
+  background-size: cover;
+  opacity: .6;
+}
+
+// Profile Page
+
+section#profile-image {
+  height: 250px;
+  width: 250px;
+  background-color: #353535;
+  border-radius: 500px;
+  margin-bottom: 15px;
+}
+
+div#profile-container > section {
+}
+
+section#profile-section {
+  padding: 20px;
+}
+
+section#saved-event-container {
+  border-top: 1px solid white;
+  margin-top: 50px;
+}
+
+.saved-event-box {
+  width: 30%;
+  margin-right: 3.33%;
+  float: left;
+  height: 200px;
+  background-color: #353535;
+  margin-bottom: 3.33%;
+}
+
+
 // Hide and show
 
 .hide {
   display: none;
-  //visibility: none;
+  visibility: hidden;
 }
