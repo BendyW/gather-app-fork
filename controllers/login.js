@@ -1,6 +1,6 @@
 var express = require('express');
 var loginCtrl = express.Router();
-var Account = require('../models/AccountModel');
+var Account = require('../models/accountModel');
 var bcrypt = require('bcryptjs');
 
 
@@ -11,12 +11,16 @@ loginCtrl.post('/logged', attemptToLogin);
 
 function attemptToLogin(req,res,next){
     var password = req.body.password;
+   // console.log(req.body)
     Account.where('user_name', req.body.user_name).fetch().then(
         function(result) {
             var attempt = comparePasswordHashes(req.body.password, result.attributes.password_hash);
             if(attempt === true) {
+     //           console.log(req.session);
                 req.session.user_name = result.attributes.user_name;
+                req.session.userid = result.attributes.id;
                 req.session.isLoggedIn = true;
+                console.log(req.session);
                 res.redirect('/');
             }
             else{

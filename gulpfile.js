@@ -44,7 +44,9 @@ gulp.task('db_create_saved_events_table', function() {
         'name varchar(100) not null,'+
         'user_name varchar(255) not null,' +
         'location varchar(65),'+
-        'primary key (id)' +
+        'primary key (id),' +
+            //works with id
+        'foreign key (id) references user_accounts(id)' +
         ');';
     function cb(res) {
         console.log(res);

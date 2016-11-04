@@ -26,6 +26,7 @@ alter table user_accounts
 modify column email varchar(255) not null unique;
 
 
+
 --
 
 create table saved_events (

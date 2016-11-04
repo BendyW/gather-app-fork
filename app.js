@@ -20,7 +20,6 @@ app.set('view engine', 'hbs');
 // Require controllers
 
 var indexCtrl = require('./controllers/index');
-var mapResultCtrl = require('./controllers/mapResult');
 var regCtrl = require('./controllers/register');
 var loginCtrl = require('./controllers/login');
 
@@ -29,7 +28,6 @@ var loginCtrl = require('./controllers/login');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/', indexCtrl);
-app.use('/result', mapResultCtrl);
 app.use('/register', regCtrl);
 app.use('/login',loginCtrl);
 

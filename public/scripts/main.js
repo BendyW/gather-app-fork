@@ -84,7 +84,7 @@ var meetupRequest = function (){
                         '<article class=' + '"results-box">' +
                         '<h2>' + (i + 1) + '.' + '</h2>' +
                         '<h3>' + data.results[i].name + '</h3>' +
-                        '<button id="save-event-button">Save</button>' +
+                        '<form action="/save" method="post"><button id="save-event-button">Save</button></form>' +
                         '</article>' +
                         '<hr>'
                     );
@@ -100,7 +100,12 @@ var meetupRequest = function (){
                         '<h2>' + (i + 1) + '.' + '</h2>' +
                         '<h3>' + data.results[i].name + '</h3>' +
                         '<h4>' + data.results[i].venue.name + '</h4>' +
-                        '<button id="save-event-button">Save</button>' +
+
+                        '<form action="/save" method="post">' +
+                        '<button id="save-event-button-' + i + '">Save</button>' +
+                        '<input type="text" name="eventName" value=" ' +  data.results[i].name + '" >' +
+                        '</form>' +
+
                         '</article>' +
                         '<hr>'
                     );
@@ -236,6 +241,22 @@ $.getJSON('https://geoip-db.com/json/geoip.php?jsonp=?')
         userGeoLocation.lng = location.longitude;
 
     });
+
+// --------------------
+
+// OnClick for Saved Events
+gatheredEvents.forEach(function(element, index, array){
+    // $('#save-event-button-0').on('click',function() {
+    //     console.log(index);
+    // });
+});
+
+
+
+
+
+
+
 
 // --------------------
 
