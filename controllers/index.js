@@ -21,22 +21,22 @@ indexCtrl.get('/profile', function (req,res,next) {
         Account.where({user_name: req.session.user_name}).fetch()
             .then(function (cb) {
                 console.log(cb.attributes);
-                res.render('profile', cb.attributes);
+                // res.render('profile', cb.attributes);
 
 
-                // var combine = {
-                //
-                //
-                // }
+                 var combine = {
+                    user_name: cb.attributes.user_name,
+                     first_name: cb.attributes.first_name,
+                     email: cb.attributes.email
+                 }
 
 
-                // Event.collection().fetch()
-                //     .then(function (cb) {
-                //         console.log(cb.models[0].attributes.id, ' this- --------------------')
-                //         var ArrayOfModels = cb.models;
-                //         console.log(Ar)
-                //         res.render('profile', ArrayOfModels );
-                //     });
+                Event.collection().fetch()
+                    .then(function (cb) {
+                        console.log(cb.models[0].attributes.id, ' this- --------------------')
+                        var ArrayOfModels = cb.models;
+                        res.render('profile', ArrayOfModels );
+                    });
 
             });
 

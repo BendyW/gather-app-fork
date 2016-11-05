@@ -18,13 +18,13 @@ gulp.task('delete_gather_db', function () {
 })
 gulp.task('db_create_user_accounts_table', function() {
     var sqlString = 'create table user_accounts(' +
-        'id int not null auto_increment,' +
+        'user_accounts_id int not null auto_increment,' +
         'user_name varchar(20) not null unique,' +
         'first_name varchar(20) not null,'+
         'last_name varchar(30) not null,' +
         'email varchar(255) not null unique,' +
         'password_hash varchar(255) not null,' +
-        'primary key (id)' +
+        'primary key (user_accounts_id)' +
         ');';
     function cb(res) {
         console.log(res);
@@ -40,13 +40,12 @@ gulp.task('db_remove_user_accounts_table', function () {
 });
 gulp.task('db_create_saved_events_table', function() {
     var sqlString = 'create table saved_events(' +
-        'id int not null auto_increment,' +
+        'saved_events_id int not null auto_increment,' +
         'name varchar(100) not null,'+
-        'user_name varchar(255) not null,' +
+        'user_accounts_id int not null,' +
         'location varchar(65),'+
-        'primary key (id),' +
-            //works with id
-        'foreign key (id) references user_accounts(id)' +
+        'primary key (saved_events_id),' +
+        'foreign key (user_accounts_id) references user_accounts(user_accounts_id)' +
         ');';
     function cb(res) {
         console.log(res);

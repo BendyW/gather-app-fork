@@ -4,7 +4,7 @@ require('./accountModel');
 var SavedEvent= Bookshelf.Model.extend({
     tableName: 'saved_events',
     account: function(){
-    return this.belongsToMany('Account');
+    return this.belongsTo('Account');
     }
 });
 console.log('saved events model GO')
