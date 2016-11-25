@@ -84,7 +84,10 @@ var meetupRequest = function (){
                         '<article class=' + '"results-box">' +
                         '<h2>' + (i + 1) + '.' + '</h2>' +
                         '<h3>' + data.results[i].name + '</h3>' +
-                        '<form action="/save" method="post"><button id="save-event-button">Save</button></form>' +
+                        '<form action="/save" method="post">' +
+                        '<button id="save-event-button">Save</button>' +
+                        '<input type="hidden" name="eventName" value="' + data.results[i].name + '" >' +
+                        '</form>' +
                         '</article>' +
                         '<hr>'
                     );
@@ -93,7 +96,7 @@ var meetupRequest = function (){
 
                     console.log(data.results[i]);
                     gatheredEvents.push(new Event(data.results[i].name, data.results[i].venue.lat, data.results[i].venue.lon));
-                    console.log('Object ' + [i] + ' successfully added');
+                    //console.log('Object ' + [i] + ' successfully added');
 
                     $('#sidebar').append(
                         '<article class=' + '"results-box">' +

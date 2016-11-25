@@ -16,7 +16,7 @@ function attemptToRegister(req,res,next){
     var hashedPassword = createPasswordHash(password);
 
     var model = new Account({
-        id: req.body.id,
+        user_accounts_id: req.body.id,
         user_name: req.body.user_name,
         email: req.body.email,
         first_name: req.body.first_name,
@@ -24,7 +24,7 @@ function attemptToRegister(req,res,next){
         password_hash: hashedPassword
     }).save().then(function(result) {
         req.session.user_name = result.attributes.user_name;
-        req.session.userid = result.attributes.id;
+        req.session.user_id = result.attributes.user_accounts_id;
         req.session.isLoggedIn = true;
         console.log(req.session);
         console.log(result);

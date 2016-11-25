@@ -11,14 +11,12 @@ loginCtrl.post('/logged', attemptToLogin);
 
 function attemptToLogin(req,res,next){
     var password = req.body.password;
-   // console.log(req.body)
     Account.where('user_name', req.body.user_name).fetch().then(
         function(result) {
             var attempt = comparePasswordHashes(req.body.password, result.attributes.password_hash);
             if(attempt === true) {
-     //           console.log(req.session);
                 req.session.user_name = result.attributes.user_name;
-                req.session.userid = result.attributes.id;
+                req.session.user_id = result.attributes.user_accounts_id;
                 req.session.isLoggedIn = true;
                 console.log(req.session);
                 res.redirect('/');

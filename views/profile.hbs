@@ -3,11 +3,11 @@ email: {{email}} <br>
 first name: {{first_name}} <br>
 last name: {{last_name}} <br>
 
-<!--{{#each  this}}-->
-    <!--You are the {{this.attributes.id}} user <br>-->
-    <!--user: {{this.attributes.user_name}} <br>-->
-    <!--email: {{this.attributes.email}} <br>-->
-    <!--First Name: {{this.attributes.first_name}}<br>-->
-    <!--Last Name : {{this.attributes.last_name}}<br>-->
-    <!--Location : {{this.attributes.location}}<br>-->
-<!--{{/each}}-->
+{{#each  this}}
+    You are the {{this.attributes.id}} user <br>
+    user: {{this.attributes.user_name}} <br>
+    email: {{this.attributes.email}} <br>
+    First Name: {{this.attributes.first_name}}<br>
+    Last Name : {{this.attributes.last_name}}<br>
+    Location : {{this.attributes.location}}<br>
+{{/each}}
