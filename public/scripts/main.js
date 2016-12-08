@@ -131,6 +131,21 @@ var meetupRequest = function (){
     });
 }
 
+
+// --------------------
+
+// Let's try the EventBrite API
+
+$.ajax({
+    url: 'https://api.meetup.com/2/open_events?&sign=true&photo-host=public&lat=' + userGeoLocation.lat + '&category=' + category + '&lon=' + userGeoLocation.lng + '&page=50&key=ba297c563351295a94119496d95d&callback=?',
+    type: 'Get',
+    crossDomain: true,
+    dataType: 'JSON',
+    success: function(data) {
+        console.log(data);
+    }
+})
+
 // --------------------
 
 // Let's Make Some Markers

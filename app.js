@@ -11,6 +11,7 @@ app.use(session({
     resave: true,
     saveUninitialized: true
 }));
+
 // Adding rendering engine
 
 app.use(express.static(__dirname + '/public'));
