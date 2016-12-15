@@ -5,6 +5,7 @@ var path = require('path');
 var app = express();
 var bodyParser = require('body-parser');
 var session = require('express-session');
+var port = 3222;
 
 app.use(session({
     secret: 'This is my secret',
@@ -35,6 +36,6 @@ app.use('/register', regCtrl);
 app.use('/login',loginCtrl);
 
 
-
+app.listen(process.env.PORT || port);
 
 module.exports = app;
