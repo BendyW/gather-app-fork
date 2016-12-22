@@ -1,0 +1,75 @@
+body {
+  margin: 0;
+  padding: 0; }
+
+html {
+  max-width: 100%;
+  overflow-x: hidden; }
+
+div#menu-bar {
+  background-color: black;
+  color: white;
+  width: 100vw;
+  height: 50px; }
+
+nav#main-nav a {
+  color: white; }
+
+div#main {
+  background-color: aqua;
+  height: 400px;
+  margin: 100px 0 0 0;
+  text-align: center; }
+
+img#main-logo {
+  width: 400px; }
+
+.main-field {
+  width: 215px;
+  height: 35px;
+  margin: 0 0 75px 0;
+  border: 0;
+  padding: 0; }
+
+h3 {
+  color: white; }
+
+h3#main-subhead {
+  font-family: Helvetica, sans-serif; }
+
+h3#tweener {
+  display: inline-block;
+  width: 35px; }
+
+button#main-button {
+  background-color: black;
+  color: white;
+  width: 175px;
+  height: 50px;
+  border: none; }
+  button#main-button:hover {
+    background-color: white;
+    color: black; }
+
+div#sidebar-container {
+  width: 20%;
+  float: left; }
+
+aside#sidebar {
+  background-color: red; }
+
+section#search-results {
+  height: 100vh;
+  background-color: aqua; }
+
+article.results {
+  height: 95px;
+  outline: 1px solid black; }
+
+div#map-container {
+  background-color: greenyellow;
+  height: 100vh;
+  width: 80%;
+  float: left; }
+
+/*# sourceMappingURL=style.css.map */
