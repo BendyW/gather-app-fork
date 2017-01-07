@@ -4,7 +4,7 @@
   "description": "gather with like-minded plebs just like you",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "./bin/www",
     "start": "node app.js"
   },
   "repository": {
@@ -32,5 +32,9 @@
     "mysql": "^2.11.1",
     "nodemon": "^1.11.0",
     "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-nodemon": "^2.2.1"
   }
 }
