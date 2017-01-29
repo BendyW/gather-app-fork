@@ -264,7 +264,10 @@ select#categories-menu {
   color: white;
   font-size: 16px;
   background-color: transparent;
+  background: transparent;
   -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   -webkit-border-radius: 0px; }
 
 section#geolocationDiv {
