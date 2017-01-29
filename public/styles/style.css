@@ -270,6 +270,11 @@ select#categories-menu {
   appearance: none;
   -webkit-border-radius: 0px; }
 
+select#categories-menu option {
+  color:black;
+  background-color: lightgray;
+}
+
 section#geolocationDiv {
   margin-top: 50px; }
 
